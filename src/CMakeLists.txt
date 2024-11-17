@@ -347,7 +347,12 @@ source_group("generated headers"
     "${PROJECT_BINARY_DIR}/generated-includes/catch2/catch_user_config.hpp"
 )
 
+
+
 add_library(Catch2 ${ALL_FILES})
+
+target_link_libraries(Catch2 PRIVATE perf-cpp)
+
 if (CATCH_ENABLE_REPRODUCIBLE_BUILD)
     add_build_reproducibility_settings(Catch2)
 endif()

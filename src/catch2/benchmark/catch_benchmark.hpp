@@ -10,6 +10,8 @@
 #ifndef CATCH_BENCHMARK_HPP_INCLUDED
 #define CATCH_BENCHMARK_HPP_INCLUDED
 
+#include <perfcpp/event_counter.h>
+
 #include <algorithm>
 #include <catch2/benchmark/catch_clock.hpp>
 #include <catch2/benchmark/catch_environment.hpp>

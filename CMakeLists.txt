@@ -110,6 +110,18 @@ if (CATCH_DEVELOPMENT_BUILD)
     add_warnings_to_targets("${CATCH_WARNING_TARGETS}")
 endif()
 
+Include(FetchContent)
+
+FetchContent_Declare(
+	perf-cpp-external
+	GIT_REPOSITORY https://github.com/jmuehlig/perf-cpp.git
+	GIT_TAG        v0.8
+)
+
+FetchContent_MakeAvailable(perf-cpp-external)
+
+include_directories(${perf-cpp-external_SOURCE_DIR}/include)
+
 # Only perform the installation steps when Catch is not being used as
 # a subproject via `add_subdirectory`, or the destinations will break,
 # see https://github.com/catchorg/Catch2/issues/1373
@@ -204,3 +216,4 @@ if (NOT_SUBPROJECT)
     include( CPack )
 
 endif()
+

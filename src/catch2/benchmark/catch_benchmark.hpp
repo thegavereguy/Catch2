@@ -33,6 +33,7 @@
 #include <chrono>
 #include <cmath>
 #include <exception>
+#include <iostream>
 #include <string>
 
 namespace Catch {
@@ -80,6 +81,11 @@ struct Benchmark {
 
       getResultCapture().benchmarkStarting(info);
 
+      auto counters      = perf::CounterDefinition();
+      auto event_counter = perf::EventCounter{counters};
+      event_counter.add({"instructions", "cycles", "cache-misses"});
+
+      std::cout << "sample" << std::endl;
       auto samples =
           user_code([&] { return plan.template run<Clock>(*cfg, env); });
 
